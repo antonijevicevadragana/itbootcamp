@@ -1,0 +1,69 @@
+p {
+    /* font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px; */
+    font: 18px Arial, Helvetica, sans-serif;
+    background: rebeccapurple url(/ruze.jpg);
+    color: whitesmoke;
+    text-align: center;
+}
+
+.klasa {
+    color: red;
+    text-align: center;
+}
+
+#p1 {
+    color: greenyellow;
+}
+
+.moja_klasa{
+    color: black;
+}
+
+/* div p {
+    background: blueviolet;
+    color: black;
+    font-size: 30px;
+} */
+
+
+/* div>p {
+    font-size: 30px;
+} */
+
+div~p {
+    font-size: 30px;
+    color: blue;
+}
+
+
+a:visited {
+    color: red;
+}
+a:link {
+    color: blue;
+}
+a:hover {
+    color: whitesmoke;
+    background-color: blue;
+}
+a:active {
+    font-size: 25px;
+}
+/* p:first-child {
+    background: purple;
+} */
+
+
+
+/* p:first-of-type {
+    border: 8px double purple;
+} */
+
+p:nth-of-type(2) {
+    border: 8px solid blue;
+}
+
+li:nth-child(2n+1) {
+    color: brown;
+}

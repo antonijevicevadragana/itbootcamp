@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<style>
+    form {
+        border: 1px solid black;
+        padding: 8px;
+    }
+
+    legend {
+        font-size: 25px;
+        font-weight: 500;
+    }
+   label {
+    display: inline-block;
+    width: 150px;
+   }
+   #submit {
+    text-align: center;
+   }
+   
+</style>
+
+<body>
+    <form action="">
+        <fieldset>
+            <legend>Form Validation</legend>
+
+            <div>
+                <label for="name" id="name">Name:</label>
+                <input type="text" name="name" id="name" />
+            </div>
+
+            <p>
+                <label for="username">Username: </label>
+                <input type="text" name="username" id="username" />
+            </p>
+
+            <p>
+                <label for="password">Password: </label>
+                <input type="password" name="password" id="password" />
+            </p>
+
+            <p>
+                <label for="pass">Re-type password: </label>
+                <input type="password" name="pass" id="pass" />
+            </p>
+
+            <p>
+                <label for="gener">Gener:</label>
+                <input type="radio" name="gener" id="male" />Male
+                <input type="radio" name="gener" id="female" />Female
+                <input type="radio" name="gener" id="other" />Other
+            </p>
+
+            <p>
+                <label for="program">Programming skills</label>
+                <input type="checkbox" name="java" id="java" />Java
+                <input type="checkbox" name="android" id="android" />Android
+                <input type="checkbox" name="ruby" id="ruby" />Ruby
+                <input type="checkbox" name="net" id="net" />.Net
+            </p>
+            <p>
+                <label for="con">Contact no: </label>
+                <input type="text" name="con" id="con">
+            </p>
+            <p>
+                <label for="mail">Email: </label>
+                <input type="email" name="mail" id="mail">
+
+            </p>
+            <p>
+                <label for="College">College</label>
+                <select name="col" id="col">
+                    <option value="">Select college</option>
+                    <option value="vipos">Vipos</option>
+                    <option value="pf">Poljoprivredni fakultet</option>
+                    <option value="dr">Drugo</option>
+                </select>
+            </p>
+
+            <input type="submit" id="submit" value="Submit">
+        </fieldset>
+    </form>
+</body>
+
+</html>

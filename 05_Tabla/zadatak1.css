@@ -9,6 +9,10 @@ td,th {
     
     
 }
+a {
+    color: black;
+    text-decoration: none;
+}
 
 #yellow {
     background-color: yellow;

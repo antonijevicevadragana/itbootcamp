@@ -1,0 +1,41 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family:Arial, Helvetica, sans-serif;
+    
+}
+td,th {
+    border: 1px solid #333;
+    
+    
+}
+
+#yellow {
+    background-color: yellow;
+}
+
+/* .table1 tr:nth-child(3) {
+    background-color: yellow;
+} */
+
+/* .table1 tr:nth-of-type(3) {
+    background-color: yellow;
+} */
+
+/* .table2 td:nth-child(3){
+    background-color: yellow;
+} */
+
+
+/* zadatak II */
+.table1 tr:nth-child(odd) {
+    font-style: italic;
+    
+}
+.table2 tr:nth-child(even):hover{
+    background-color: yellow;
+}
+
+.table2 tr:nth-child(3n) {
+    color: blue;
+}

@@ -1,0 +1,46 @@
+div {
+    background-color: rgb(255, 228, 196);
+    border:2px solid black;
+    width: 200px;
+    height: 130px;
+}
+
+#d2 {
+    position:fixed;
+    top: 30px;
+    left: 30px;   
+}
+
+#d2 h3 {
+    position: absolute;
+    top: 0;
+    right: 40px;
+    margin: 0;
+}
+#d2 p {
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+}
+
+div:last-of-type {
+    position: relative;
+    z-index: 1;
+}
+
+#t {
+    position: relative;
+    background: rebeccapurple;
+    z-index: 100;
+    
+}
+
+#tt {
+    position: absolute;
+    background: blue;
+    top: 50px;
+    left: 30px;
+    
+    
+
+}

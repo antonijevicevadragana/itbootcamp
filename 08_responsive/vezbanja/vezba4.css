@@ -82,7 +82,7 @@ header span {
 .druga_navigacija ul{
     list-style-type: none;
     width: 100%;
-    background: rgba(128, 128, 128, 0.438);
+    
     width: 100%;    
 }
 
@@ -93,6 +93,9 @@ header span {
 .druga_navigacija ul li {
     border: 2px solid white;  
     width: 100%; 
+    background: rgba(128, 128, 128, 0.438);
+    
+    
 }
 
 .druga_navigacija ul li a {
@@ -105,6 +108,7 @@ header span {
 
 .druga_navigacija ul li a:hover {
     background-color: grey;
+    
 }
 
 /* || FORMA*/

@@ -397,4 +397,16 @@ echo "<p>Broj stringova koji sadrze slovo a je  $brojPocinjeA</p>";
 //$b[0], $b[1], …, $b[n - 1]. 
 //Formirati niz $c[0], $c[1], …, $c[2n – 1] čiji su elementi 
 //$a[0], $b[0], $a[1], $b[1], …, $a[n - 1], $b[n - 1].
+
+
+////////////////////asocijativni nizovi//////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
 ?>

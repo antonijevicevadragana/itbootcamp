@@ -31,7 +31,9 @@ Echo $random . "autor je" . $Motiv[$random];
 echo "<hr>";
 
 $citat= array_keys($Motiv);
+
 $random =$citat[array_rand($citat,1)];
+echo "<hr>";
 echo "<q>" . $random. "</q>". "<p><cite>" .$Motiv[$random] . "</cite></p>";
 
 

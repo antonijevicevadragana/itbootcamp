@@ -64,7 +64,7 @@ public function setGodIzdanja($god) {
 }
 
 public function setBrojStrana($br) {
-    $br=$this->brojStrana;
+   
     if (is_int($br)) {
         $this->brojStrana=$br;
     }
@@ -86,7 +86,7 @@ public function setCena($c) {
 ///metode
 
 public function obimna() {
-    if ($this->brojStrana> 600) {
+    if ($this->brojStrana > 600) {
 
         return true;
     }
@@ -106,7 +106,7 @@ public function skupa() {
     }
 }
 
-public function dugackoIme() {
+public function dugackoIme() {   // u pozivu fuje ispisujes
     $duzina=strlen($this->autor);
     if ($duzina > 18) {
         return true;
@@ -125,6 +125,7 @@ public function stampa(){
 $knjiga1=new Knjiga("Orkanski Visovi", "Emili Bronte",1991, 850, 900 );
 $knjiga1->stampa();
 
+echo "<hr>";
 if($knjiga1->obimna() == true) {
     echo "Knjiga je obimna";
 } else {

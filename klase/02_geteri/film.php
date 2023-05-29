@@ -43,11 +43,11 @@ public function setGodina($god) {
 }
 
 //ispisujemo 
-$f1= new Film();
-$f1->setNaslov("Artic");
-$f1->setGodina(1500);
-echo $f1->getGodinaIzdanja();
-echo $f1->getNaslov();
+// $f1= new Film();
+// $f1->setNaslov("Artic");
+// $f1->setGodina(1500);
+// echo $f1->getGodinaIzdanja();
+// echo $f1->getNaslov();
 
 
 ?>

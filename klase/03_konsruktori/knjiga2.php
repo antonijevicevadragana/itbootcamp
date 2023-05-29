@@ -83,7 +83,8 @@ class Knjiga {
 
     $knjiga = new Knjiga("Bela Griva", "René Guillot", 1959, 120, 490);
 
-    $knjiga->stampa();
+    $knjiga->stampa(); 
+
     if($knjiga->obimna() == true) {
         echo "Knjiga je obimna";
     } else {

@@ -6,16 +6,12 @@ class Trougao
     private $b;
     private $c;
 
-    private static function uslovZaTrougao($a, $b, $c) {
-        return ($a > 0 && $b > 0 && $c > 0 && $a + $b > $c && $a + $c > $b && $b + $c > $a);
-    }
-
     //construktor
 
     public function __construct($a, $b, $c)
     {
 
-         if (self::uslovZaTrougao($a, $b, $c)) {
+         if ($a > 0 && $b > 0 && $c > 0 && $a + $b > $c && $a + $c > $b && $b + $c > $a) {
             $this->a=$a;
             $this->b=$b;
             $this->c=$c;
@@ -32,7 +28,7 @@ class Trougao
 
     public function setA($a)
     {
-        if (self::uslovZaTrougao($a, $this->b, $this->c)) {
+        if ($a > 0 && $a + $this->b > $this->c && $a + $this->c > $this->b && $this->b + $this->c > $a) {
             $this->a = $a;
         }
         else {
@@ -42,7 +38,7 @@ class Trougao
 
     public function setB($b)
     {
-        if (self::uslovZaTrougao($this->a, $b, $this->c)) {
+        if ($b > 0 && $this->a + $b > $this->c && $this->a + $this->c > $this->b && $b + $this->c > $this->a) {
             if ($b > 0 ) {
             $this->b = $b;
         }
@@ -54,7 +50,7 @@ class Trougao
 
     public function setC($c)
     {
-        if (self::uslovZaTrougao($this->a, $this->b, $c)) {
+        if ($c > 0 && $this->a + $this->b > $c && $this->a + $c > $this->b && $this->b + $c > $this->a) {
             $this->c = $c;
         }
         // else {
@@ -99,5 +95,3 @@ class Trougao
         return $povrsina;
     }
 }
-
-//$s=$this->obimTrougla() /2;

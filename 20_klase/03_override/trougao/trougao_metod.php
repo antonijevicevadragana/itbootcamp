@@ -1,6 +1,7 @@
 <?php
 
-class Trougao
+require_once "oblik.php";
+class Trougao extends Oblik
 {
     private $a;
     private $b;
@@ -14,6 +15,7 @@ class Trougao
 
     public function __construct($a, $b, $c)
     {
+        parent::__construct(Oblik::TROUGAO);
 
          if (self::uslovZaTrougao($a, $b, $c)) {
             $this->a=$a;
@@ -87,17 +89,22 @@ class Trougao
 
     //metode
 
-    public function obimTrougla()
+    public function obim()
     {
         $obim = ($this->a + $this->b + $this->c);
         return $obim;
+       
     }
 
-    public function povrsinaTrougla()
+    public function povrsina()
     {
         $povrsina = (sqrt(($this->a + $this->b + $this->c) * ($this->a + $this->b - $this->c) * ($this->b + $this->c - $this->a) * ($this->c + $this->a - $this->b))) / 4;
         return $povrsina;
+
+       
+
     }
 }
 
 //$s=$this->obimTrougla() /2;
+//$p=sqrt($s*($s-$this->a) *($s-$this->b)*($s-$this->c));

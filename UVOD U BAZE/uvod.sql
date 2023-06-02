@@ -11,7 +11,7 @@ USE test_baza;
 
 --zadatak skola
 --kreiraj bazu skola
-CREATE DATABASE skola	CHARACTER SET utf16 COLLATE 	utf16_slovenian_ci;
+CREATE DATABASE skola	CHARACTER SET utf16 COLLATE utf16_slovenian_ci;
 
 USE skola;
 
@@ -57,7 +57,7 @@ ALTER TABLE `customers` ADD PRIMARY KEY(`id`);
 ALTER TABLE `tasks` ADD PRIMARY KEY(`task_id`); 
 
 --dodavanje jos jedne kolone u tabeli
-AlTER TABLE tasks 
+ALTER TABLE tasks 
 ADD title VARCHAR(255) NOT NULL;
 
 --zadatak 20 slide
@@ -91,3 +91,16 @@ VALUES
 
 INSERT INTO customers
 VALUES (4, "Ana", 25, "Bubanjskih heroja 48", 600, 1, "Srbija", 37);
+
+--dodavanje redova u taskovima
+
+INSERT INTO tasks (task_id,title, start_date, due_date, status, description, priority)
+VALUES 
+(1, "Čas iz ITbootcampa", "2023-06-02", "2023-06-02", 1, "Čas iz baze podataka",1),
+(2, "Šetnja", "2023-06-01", "2023-06-01", 1, "Lagana šetnja",0),
+(3, "Uradi domaći zadatak", "2023-06-03",  NULL ,1,  "Domaci zadatka iz SQLa",1);
+
+INSERT INTO `tasks`
+VALUES
+(4, "Uciti my sql", "2023-06-02","2023-06-10", 1, "Sql", 1 ),
+(5, "Uciti klase", "2023-06-02","2023-06-10", 1, "klase", 1 );

@@ -1,5 +1,7 @@
 <?php
 
+use Kredit as GlobalKredit;
+
 abstract class Kredit {
     protected $naziv;
     protected $osnovica;
@@ -27,8 +29,7 @@ abstract class Kredit {
         // else {
         //     $this->naziv=strval($n);
         // }
-        
-        if ($n == self::AUTO || $n == self::STAN) {
+        if ($n == Kredit::AUTO || $n == Kredit::STAN) {
             $this->naziv=$n;
         }
     }

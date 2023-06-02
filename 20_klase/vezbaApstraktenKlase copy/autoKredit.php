@@ -5,8 +5,8 @@ class AutoKredit extends Kredit{
 
     protected $AutoKamata;
 
-    public function __construct($o, $k, $god, $Akamata) {
-        parent::__construct(Kredit::AUTO, $o, $k, $god);
+    public function __construct($n, $o, $k, $god, $Akamata) {
+        parent::__construct($n, $o, $k, $god);
         $this->setAutoKamata($Akamata);
     }
     

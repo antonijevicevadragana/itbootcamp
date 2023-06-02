@@ -3,8 +3,8 @@ require_once "kredit.php";
 
 class StambeniKredit extends Kredit {
 
-    public function __construct($o, $k, $god) {
-        parent::__construct(Kredit::STAN, $o, $k, $god);
+    public function __construct($n, $o, $k, $god) {
+        parent::__construct($n, $o, $k, $god);
        
     }
 

@@ -135,6 +135,21 @@ LEFT JOIN `predmeti` ON `ispiti`.`predmet_id`=`predmeti`.`id`
 LEFT JOIN `nastavnici` ON `ispiti`.`nastavnik_id`=`nastavnici`.`id`
 WHERE `studenti`.`ime` ="Nikola" AND `studenti`.`prezime` ="Devic";
 
+SELECT DISTINCT
+`predmeti`.`naziv`,
+FROM `ispiti` 
+LEFT JOIN `studenti` ON `ispiti`.`student_indeks`=`studenti`.`index` 
+LEFT JOIN `predmeti` ON `ispiti`.`predmet_id`=`predmeti`.`id`
+-- LEFT JOIN `nastavnici` ON `ispiti`.`nastavnik_id`=`nastavnici`.`id`
+WHERE `studenti`.`ime` ="Nikola" AND `studenti`.`prezime` ="Devic";
+
+
+SELECT DISTINCT
+`predmeti`.`naziv`
+FROM `ispiti`
+LEFT JOIN `predmeti` ON `ispiti`.`predmet_id`=`predmeti`.`id`
+WHERE `ispiti`.`studenti_index` = (SELECT `index` from `studenti_index`)
+
 
 -- Uraditi zadatak 3) tako da se ispišu samo takvi ispiti na kojima je ocena veća od 8.
 
@@ -151,17 +166,32 @@ LEFT JOIN `nastavnici` ON `ispiti`.`nastavnik_id`=`nastavnici`.`id`
 WHERE `studenti`.`ime` ="Nikola" AND `studenti`.`prezime` ="Devic" 
 AND `ispiti`.`ocena` >8;
 
--- Za dato ime i prezime studenta, odrediti njegovu prosečnu ocenu.
 
-SELECT AVG(`ispiti`.`ocena`)
+SELECT DISTINCT
+`predmeti`.`naziv`
 FROM `ispiti` 
 LEFT JOIN `studenti` ON `ispiti`.`student_indeks`=`studenti`.`index` 
 LEFT JOIN `predmeti` ON `ispiti`.`predmet_id`=`predmeti`.`id`
 LEFT JOIN `nastavnici` ON `ispiti`.`nastavnik_id`=`nastavnici`.`id`
+WHERE `studenti`.`ime` ="Nikola" AND `studenti`.`prezime` ="Devic" 
+AND `ispiti`.`ocena` >8;
+
+-- Za dato ime i prezime studenta, odrediti njegovu prosečnu ocenu.
+
+SELECT AVG(`ispiti`.`ocena`) AS `srednja ocena`
+FROM `ispiti` 
+LEFT JOIN `studenti` ON `ispiti`.`student_indeks`=`studenti`.`index` 
+-- LEFT JOIN `predmeti` ON `ispiti`.`predmet_id`=`predmeti`.`id`
+-- LEFT JOIN `nastavnici` ON `ispiti`.`nastavnik_id`=`nastavnici`.`id`
 WHERE `studenti`.`ime` ="Nikola" AND `studenti`.`prezime` ="Devic" AND `ispiti`.`ocena`>5 ;
 
 
+
 -- AND `ispiti`.`ocena` >8;
+
+
+
+
 
 -- Za dat naziv predmeta odrediti maksimalnu ocenu na nekom ispitu iz tog predmeta.
 
@@ -169,7 +199,8 @@ SELECT
 MAX(`ocena`) AS `maksimalna ocena iz CSS`
 FROM `ispiti`
 LEFT JOIN `predmeti` ON `ispiti`.`predmet_id`=`predmeti`.`id`
-WHERE `predmeti`.`naziv` = "CSS";
+WHERE `predmeti`.`naziv` = "CSS" 
+AND `ispiti`.`datum`= "2023-04-17";
 
 --sumu ocena iz odredjenog predmeta
 
@@ -192,4 +223,31 @@ FROM `ispiti`
 LEFT JOIN `predmeti` ON `ispiti`.`predmet_id` = `predmeti`.`id`
 WHERE `ispiti`.`ocena` > 5 AND `ispiti`.`datum` = "2023-06-05";
 
+-- 7)Za dat datum i nastavnika odrediti prosečnu ocenu svih ispita koji su se polagali tog dana a koje je ocenio taj nastavnik.
+SELECT AVG(`ispiti`.`ocena`) AS `prosecna ocena`
+FROM `ispiti`
+-- LEFT JOIN `predmeti` ON `ispiti`.`predmet_id` = `predmeti`.`id`
+LEFT JOIN `nastavnici` ON `ispiti`.`nastavnik_id`=`nastavnici`.`id`
+WHERE  `ispiti`.`datum` = "2023-06-05" AND `nastavnici`.`ime` = "Stefan"
+AND `ispiti`.`ocena` >5;
 
+--Za dati datum ispisati imena i prezimena studenata koji nisu polagali ispit tog dana
+
+SELECT CONCAT(`s`.`ime`, " ", `s`. `prezime`)AS `student`
+FROM `ispiti` as `i`
+LEFT JOIN `studenti` as `s` ON `i`.`student_indeks`=`s`.`index`
+WHERE `i`.`datum` ="2023-04-17";
+
+SELECT CONCAT(`studenti`.`ime`, " ", `studenti`. `prezime`)AS `student`
+FROM `ispiti`
+LEFT JOIN `studenti` as `studenti` ON `ispiti`.`student_indeks`=`studenti`.`index`
+WHERE `ispiti`.`datum` ="2023-04-17"; -- koji su polagali
+
+
+SELECT * 
+FROM `studenti`
+WHERE `studenti`.`index` NOT IN(SELECT `ispiti`.`student_indeks` FROM `ispiti` WHERE `ispiti`.`datum` ="2023-05-18");
+
+SELECT * FROM `studenti`
+LEFT JOIN `ispiti` ON `ispiti`.`student_indeks`=`studenti`.`index` AND `ispiti`.`datum`="2023-05-18"
+WHERE `ispiti`.`id` is null;

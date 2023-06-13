@@ -3,6 +3,7 @@ require_once 'connection.php';
 
 //pravimo niz u kome smestamo poruke o nevalidno popunjenoj formi
 $errMsg=[];
+$ime=$prezime=$email=$broj_telefona="";
 
 //proveravamo da li smo na stranicu dosli POST metodom
 if( $_SERVER["REQUEST_METHOD"] == "POST"){
@@ -85,21 +86,30 @@ if( $_SERVER["REQUEST_METHOD"] == "POST"){
                     </div>
                     <div class="card-body">
                         <form action="#" method="post"> <!-- forma salje podatke istoj stranici POST metodom -->
-                            <div class="form-group mb-3">
+                        <div class="form-group mb-3">
                                 <label>Ime:</label>
-                                <input type="text" name="ime" class="form-control"> <!-- vrednost atributa NAME mora da bude jedinstveno na nivo forme jer je to klju u asocijativnom nizu kada se preuzmu parametri -->
+                                <input type="text" name="ime" class="form-control <?php if(isset($errMsg['ime'])) echo "is-invalid"; ?>"
+                                value="<?php echo $ime;?>"
+                                > <!-- vrednost atributa NAME mora da bude jedinstveno na nivo forme jer je to klju u asocijativnom nizu kada se preuzmu parametri -->
+                                <span class="invalid-feedback"><?php if(isset($errMsg['ime'])) echo $errMsg['ime']; ?></span>
                             </div>
                             <div class="form-group mb-3">
                                 <label>Prezime:</label>
-                                <input type="text" name="prezime" class="form-control">
+                                <input type="text" name="prezime" class="form-control <?php if(isset($errMsg['prezime'])) echo "is-invalid"; ?>"
+                                value="<?php echo $prezime;?>">
+                                <span class="invalid-feedback"><?php if(isset($errMsg['prezime'])) echo $errMsg['prezime']; ?></span>
                             </div>
                             <div class="form-group mb-3">
                                 <label>Email:</label>
-                                <input type="text" name="email" class="form-control">
+                                <input type="text" name="email" class="form-control <?php if(isset($errMsg['email'])) echo "is-invalid"; ?>"
+                                value="<?php echo $email;?>">
+                                <span class="invalid-feedback"><?php if(isset($errMsg['email'])) echo $errMsg['email']; ?></span>
                             </div>
                             <div class="form-group mb-3">
                                 <label>Broj telefona:</label>
-                                <input type="text" name="broj_telefona" class="form-control">
+                                <input type="text" name="broj_telefona" class="form-control <?php if(isset($errMsg['broj_telefona'])){ echo "is-invalid"; }?>"
+                                value="<?php echo $broj_telefona;?>">
+                                <span class="invalid-feedback"><?php if(isset($errMsg['broj_telefona'])) echo $errMsg['broj_telefona']; ?></span>
                             </div>
                             <div class="float-end mb-3">
                                 <button type="sumbit" class="btn btn-success"> Sacuvaj </button> <!-- Unutar forme moramo da imamo submit dugme na ciji se klik zapravo salju podaci -->

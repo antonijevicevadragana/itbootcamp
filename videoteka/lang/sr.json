@@ -12,5 +12,10 @@
     "Add" : "Dodaj",
     "Save" : "Sačuvaj",
     "Cancel" : "Otkaži",
-    "Edit" : "Izmeni"
+    "Edit" : "Izmeni",
+    "People": "Ljudi",
+    "Name" : "ime",
+    "Surname" : "Prezime",
+    "Date of birth" : "Datum rodjenja"
+
 }

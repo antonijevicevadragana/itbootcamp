@@ -40,38 +40,52 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-  //prikaz svih podataka
-  Route::get('/genre', [GenreController::class, 'index'])
-  ->name('genre.index');
+    //prikaz svih podataka
+    Route::get('/genre', [GenreController::class, 'index'])
+        ->name('genre.index');
 
-  //prikaz forme za unos
-  Route::get('/genre/create', [GenreController::class, 'create'])
-  ->name('genre.create');
-  
-  //validacija podataka i upis novog reda u tabelu
-  Route::post('/genre', [GenreController::class, 'store'])
-  ->name('genre.store');
+    //prikaz forme za unos
+    Route::get('/genre/create', [GenreController::class, 'create'])
+        ->name('genre.create');
 
-  //forma za izmenu podatka
-  Route::get('/genre/{genre}/edit', [GenreController::class, 'edit'])
-  ->name('genre.edit');
+    //validacija podataka i upis novog reda u tabelu
+    Route::post('/genre', [GenreController::class, 'store'])
+        ->name('genre.store');
 
-  //izmena postojećeg podatka
-  Route::put('/genre/{genre}', [GenreController::class, 'update'])
-  ->name('genre.update');
+    //forma za izmenu podatka
+    Route::get('/genre/{genre}/edit', [GenreController::class, 'edit'])
+        ->name('genre.edit');
+
+    //izmena postojećeg podatka
+    Route::put('/genre/{genre}', [GenreController::class, 'update'])
+        ->name('genre.update');
 
 
+
+        //rute za person - (people tabela)
 
 
     //prikaz svih podataka person - people table
     Route::get('/person', [PersonController::class, 'index'])
-    ->name('person.index');
+        ->name('person.index');
+    //prikaz forme za unos
+    Route::get('/person/create', [PersonController::class, 'create'])
+        ->name('person.create');
 
+ //validacija podataka i upis novog reda u tabelu
+ Route::post('/person', [PersonController::class, 'store'])
+     ->name('person.store');
 
+ //forma za izmenu podatka
+ Route::get('/person/{person}/edit', [PersonController::class, 'edit'])
+     ->name('person.edit');
 
+ //izmena postojećeg podatka
+ Route::put('/person/{person}', [PersonController::class, 'update'])
+     ->name('person.update');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Auth::routes([
     'register' => false,

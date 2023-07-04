@@ -57,9 +57,13 @@
                                 <a class="dropdown-item" href="{{ route('genre.index') }}">
                                     {{ __('Genres') }}
                                 </a>
+                                <a class="dropdown-item" href="{{ route('person.index') }}">
+                                    {{ __('People') }}
+                                </a>
                             </div>
-                        </li>
+
                     </ul>
+
 
 
                     <!-- Right Side Of Navbar -->

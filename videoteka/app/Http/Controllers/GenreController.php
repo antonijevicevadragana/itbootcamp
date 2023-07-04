@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Genre;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class GenreController extends Controller
 {
@@ -23,7 +24,7 @@ class GenreController extends Controller
      */
     public function create()
     {
-        //
+        return view('genre.create');
     }
 
     /**
@@ -31,7 +32,26 @@ class GenreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name_en' => 'required|unique:genres,name_en|alpha',
+            'name_sr' => 'nullable|unique:genres,name_sr|alpha'
+        ]);
+    
+
+        //kod ispod se izvrsava u slucaju da je forma prosla validaciju
+
+        //1. create
+        //Genre::create(['name_en'=>'mistery', 'name_sr'=>'misterija']); 
+        //2. istanca klase
+        /*$g = new Genre;
+        $g->name_en = 'mistery';
+        $g->name_sr = 'misterija';
+        $g->save();*/
+
+        Genre::create($request->all()); 
+
+        return redirect()->route('genre.index');
+            
     }
 
     /**
@@ -45,9 +65,11 @@ class GenreController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+    //$genre = Genre::find($request->input('id'))
     public function edit(Genre $genre)
     {
-        //
+        //return view('genre.edit', ['genre'=>$genre]);
+        return view('genre.edit', compact('genre'));
     }
 
     /**
@@ -55,7 +77,22 @@ class GenreController extends Controller
      */
     public function update(Request $request, Genre $genre)
     {
-        //
+        $request->validate([
+            'name_en' => [
+                'required', 
+                //'unique:genres,name_en', 
+                Rule::unique('genres', 'name_en')->ignore($genre->id),
+                'alpha'],
+            'name_sr' => [
+                'nullable', 
+                //'unique:genres,name_sr', 
+                Rule::unique('genres', 'name_sr')->ignore($genre->id),
+                'alpha']
+        ]);
+
+        $genre->update($request->all());
+
+        return redirect()->route('genre.index');
     }
 
     /**

@@ -4,5 +4,13 @@
     "Password" : "Lozinka",
     "Remember Me" : "Zapamti me",
     "Logout" : "Odjavi me",
-    "You are logged in!" : "Uspešno ste logovani!"
+    "You are logged in!" : "Uspešno ste logovani!",
+    "Genres" : "Žanrovi",
+    "Name EN" : "Naziv EN",
+    "Name SR" : "Naziv SR",
+    "Settings" : "Administracija",
+    "Add" : "Dodaj",
+    "Save" : "Sačuvaj",
+    "Cancel" : "Otkaži",
+    "Edit" : "Izmeni"
 }

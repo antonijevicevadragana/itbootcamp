@@ -46,7 +46,7 @@
                             @endif
                         </li>
                     </ul>
-
+                    @auth
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a id="navbarAdministacija" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -63,8 +63,7 @@
                             </div>
 
                     </ul>
-
-
+                    @endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -106,7 +105,19 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    @if(session('alertMsg'))
+                        <div class="alert alert-{{session('alertType')}} alert-dismissible fade show" role="alert">
+                            {{ __(session('alertMsg'))}}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                    @yield('content')
+                </div>
+            </div>
+        </div>
         </main>
     </div>
 </body>

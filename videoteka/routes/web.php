@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 //use Illuminate\Support\Facades\App;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\PersonController;
+use App\Http\Controllers\FilmController;
 
 
 /*
@@ -40,29 +41,35 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    //prikaz svih podataka
-    Route::get('/genre', [GenreController::class, 'index'])
+        //prikaz svih podataka
+        Route::get('/genre', [GenreController::class, 'index'])
         ->name('genre.index');
-
-    //prikaz forme za unos
-    Route::get('/genre/create', [GenreController::class, 'create'])
+    
+        //prikaz forme za unos
+        Route::get('/genre/create', [GenreController::class, 'create'])
         ->name('genre.create');
-
-    //validacija podataka i upis novog reda u tabelu
-    Route::post('/genre', [GenreController::class, 'store'])
+        
+        //validacija podataka i upis novog reda u tabelu
+        Route::post('/genre', [GenreController::class, 'store'])
         ->name('genre.store');
-
-    //forma za izmenu podatka
-    Route::get('/genre/{genre}/edit', [GenreController::class, 'edit'])
+    
+        //forma za izmenu podatka
+        Route::get('/genre/{genre}/edit', [GenreController::class, 'edit'])
         ->name('genre.edit');
-
-    //izmena postojećeg podatka
-    Route::put('/genre/{genre}', [GenreController::class, 'update'])
+    
+        //izmena postojećeg podatka
+        Route::put('/genre/{genre}', [GenreController::class, 'update'])
         ->name('genre.update');
+    
+        //brisanje podatka
+        Route::delete('/genre/{genre}', [GenreController::class, 'destroy'])
+        ->name('genre.destroy');
+    
+        //definisanje svih 7 ruta za kontroler
+        Route::resource('film', FilmController::class);
 
 
-
-        //rute za person - (people tabela)
+    //rute za person - (people tabela)
 
 
     //prikaz svih podataka person - people table
@@ -72,17 +79,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/person/create', [PersonController::class, 'create'])
         ->name('person.create');
 
- //validacija podataka i upis novog reda u tabelu
- Route::post('/person', [PersonController::class, 'store'])
-     ->name('person.store');
+    //validacija podataka i upis novog reda u tabelu
+    Route::post('/person', [PersonController::class, 'store'])
+        ->name('person.store');
 
- //forma za izmenu podatka
- Route::get('/person/{person}/edit', [PersonController::class, 'edit'])
-     ->name('person.edit');
+    //forma za izmenu podatka
+    Route::get('/person/{person}/edit', [PersonController::class, 'edit'])
+        ->name('person.edit');
 
- //izmena postojećeg podatka
- Route::put('/person/{person}', [PersonController::class, 'update'])
-     ->name('person.update');
+    //izmena postojećeg podatka
+    Route::put('/person/{person}', [PersonController::class, 'update'])
+        ->name('person.update');
 });
 
 require __DIR__ . '/auth.php';

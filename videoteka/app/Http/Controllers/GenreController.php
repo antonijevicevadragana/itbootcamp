@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Genre;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\App;
 
 class GenreController extends Controller
 {
@@ -13,9 +14,19 @@ class GenreController extends Controller
      */
     public function index()
     {
-        //all dovlaci sve podatke iz tabele genres
-        $data = Genre::all();
+        $locale = App::currentLocale(); // en/sr
+        
+        //en -> sort po name_en
+        //sr -> sort po name_sr
 
+        if($locale=='en'){
+            $data = Genre::orderBy('name_en')->paginate(4);
+        }elseif($locale=='sr'){
+            $data = Genre::orderBy('name_sr')->paginate(4);
+        }else{
+            //all dovlaci sve podatke iz tabele genres
+            $data = Genre::paginate(4);
+        }        
         return view('genre.index', ['data'=>$data]);
     }
 
@@ -41,14 +52,17 @@ class GenreController extends Controller
         //kod ispod se izvrsava u slucaju da je forma prosla validaciju
 
         //1. create
-        //Genre::create(['name_en'=>'mistery', 'name_sr'=>'misterija']); 
+        //Genre::create(['name_en'=>'Mystery', 'name_sr'=>'Misterija']); 
         //2. istanca klase
         /*$g = new Genre;
-        $g->name_en = 'mistery';
-        $g->name_sr = 'misterija';
+        $g->name_en = 'Mystery';
+        $g->name_sr = 'Misterija';
         $g->save();*/
 
         Genre::create($request->all()); 
+
+        $request->session()->flash('alertType', 'success');
+        $request->session()->flash('alertMsg', 'Successfully added.');
 
         return redirect()->route('genre.index');
             
@@ -92,6 +106,9 @@ class GenreController extends Controller
 
         $genre->update($request->all());
 
+        $request->session()->flash('alertType', 'success');
+        $request->session()->flash('alertMsg', 'Successfully updated.');
+
         return redirect()->route('genre.index');
     }
 
@@ -100,6 +117,11 @@ class GenreController extends Controller
      */
     public function destroy(Genre $genre)
     {
-        //
+        $genre->delete();
+
+        session()->flash('alertType', 'success');
+        session()->flash('alertMsg', 'Successfully deleted.');
+
+        return redirect()->route('genre.index');
     }
 }

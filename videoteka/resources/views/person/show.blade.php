@@ -21,9 +21,11 @@
   <div class="col-12 mb-3">
     <p class="mb-0">{{ __('Director')}}</p>
     <p class="text-muted">
-      @foreach($person->directors as $w)
-      {{ $w->NameYear}}
+       @foreach($person->directors->sortByDesc('NameYear') as $w)
+       {{ $w->NameYear}}<br>
       @endforeach
+
+    
     </p>
   </div>
 
@@ -31,8 +33,8 @@
     <div class="col-12 mb-3">
       <p class="mb-0">{{ __('Writer')}}</p>
       <p class="text-muted">
-        @foreach($person->writers as $w)
-        {{ $w->NameYear}}
+        @foreach($person->writers->sortByDesc('NameYear') as $w)
+       {{$w->NameYear}}<br>
         @endforeach
       </p>
     </div>
@@ -41,8 +43,8 @@
       <div class="col-12 mb-3">
         <p class="mb-0">{{ __('Stars')}}</p>
         <p class="text-muted">
-          @foreach($person->stars as $w)
-          {{ $w->NameYear}}
+          @foreach($person->stars->sortByDesc('NameYear') as $w)
+          {{ $w->NameYear}}<br>
           @endforeach
         </p>
       </div>

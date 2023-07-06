@@ -41,9 +41,10 @@ class Film extends Model
 protected function NameYear(): Attribute
 {
     return Attribute::make(
-        get: fn () => ($this->name . " " . $this->year),
+        get: fn () => ($this->rating. " - ". $this->name . " " . $this->year ."; ")
     );
 }
- 
+
+
 
 }

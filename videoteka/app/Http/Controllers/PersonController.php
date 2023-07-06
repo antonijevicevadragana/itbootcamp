@@ -76,6 +76,12 @@ class PersonController extends Controller
     //    $person ->leftJoin('film_director', 'person_id', '=', 'people.id')->leftJoin('films', 'films.id', '=', 'film_id')->get();
     
 
+  
+   
+    
+
+    
+      
         return view('person.show', ['person'=>$person]);
     }
 

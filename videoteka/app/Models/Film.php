@@ -36,11 +36,14 @@ class Film extends Model
         return $this->belongsToMany(Person::class, 'film_director');
      }
 
+///////////////////////
 
-////////////////////////////
-public function people(): BelongsToMany {
-    return $this->belongsToMany(Person::class, 'people');
-} 
-
+protected function NameYear(): Attribute
+{
+    return Attribute::make(
+        get: fn () => ($this->name . " " . $this->year),
+    );
+}
+ 
 
 }

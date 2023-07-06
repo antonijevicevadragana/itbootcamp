@@ -25,16 +25,7 @@ class Person extends Model
         );
     }
 
-
-
-    //////////////
-     
-
-    public function films(): BelongsToMany {
-        return $this->belongsToMany(Film::class, 'films',);
-    } 
-
-    // //////
+/////////////////////////////////////////////////////////////////////////////
     
     public function writers(): BelongsToMany {
         return $this->belongsToMany(Film::class, 'film_writer');
@@ -48,4 +39,8 @@ class Person extends Model
         return $this->belongsToMany(Film::class, 'film_director');
      }
  
+
+    //  public function films(): BelongsToMany {
+    //     return $this->belongsToMany(Film::class, 'films');
+    // } 
 }

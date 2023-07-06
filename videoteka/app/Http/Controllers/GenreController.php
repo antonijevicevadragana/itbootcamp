@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\App;
 
+
 class GenreController extends Controller
 {
     /**
@@ -20,12 +21,12 @@ class GenreController extends Controller
         //sr -> sort po name_sr
 
         if($locale=='en'){
-            $data = Genre::orderBy('name_en')->paginate(4);
+            $data = Genre::orderBy('name_en')->paginate(5);
         }elseif($locale=='sr'){
-            $data = Genre::orderBy('name_sr')->paginate(4);
+            $data = Genre::orderBy('name_sr')->paginate(5);
         }else{
             //all dovlaci sve podatke iz tabele genres
-            $data = Genre::paginate(4);
+            $data = Genre::paginate(5);
         }        
         return view('genre.index', ['data'=>$data]);
     }

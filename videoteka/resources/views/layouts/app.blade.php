@@ -46,7 +46,7 @@
                             @endif
                         </li>
                     </ul>
-                    @auth
+                    @auth 
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a id="navbarAdministacija" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -105,7 +105,7 @@
         </nav>
 
         <main class="py-4">
-        <div class="container">
+        <div class="container"> <!--ovo je za alert da bude ucitano u svakoj stranici -->
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     @if(session('alertMsg'))
@@ -114,7 +114,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
-                    @yield('content')
+                    @yield('content') 
                 </div>
             </div>
         </div>

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\FilmController;
+use Illuminate\Support\Facades\Auth;
 
 
 /*
@@ -90,6 +91,15 @@ Route::middleware('auth')->group(function () {
     //izmena postojećeg podatka
     Route::put('/person/{person}', [PersonController::class, 'update'])
         ->name('person.update');
+
+     //brisanje podatka
+     Route::delete('/person/{person}', [PersonController::class, 'destroy'])
+     ->name('person.destroy');
+
+     //detaljan prikaz podatka
+Route::get('/person/{person}', [PersonController::class, 'show'])
+->name('person.show');
+
 });
 
 require __DIR__ . '/auth.php';
